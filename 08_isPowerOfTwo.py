@@ -5,7 +5,9 @@
 #     -2^31 <= n <= 2^31 - 1
 
 class Solution:
-    def isPowerOfTwo(self, n: int) -> bool:
+
+    ## Loop Approach
+    def isPowerOfTwoByLoop(self, n: int) -> bool:
         if n<=0:
             return False
         elif n==1:
@@ -27,7 +29,30 @@ class Solution:
 
         return isPowerOfTwo
     
+    ## Recursion Approach
+    def checkPowerOfTwo(self, n: int) -> bool:
+        if int(n%2) == 1:
+            return False
+        
+        q: int = int(n/2)
 
-ob = Solution()
+        if q == 1:
+            return True
+        else:
+            return self.checkPowerOfTwo(q)
+    
+    def isPowerOfTwo(self, n: int) -> bool:
 
-print(ob.isPowerOfTwo(6))
+        if n<=0:
+            return False
+        elif n==1:
+            return True
+
+        ob1 = Solution()
+        return ob1.checkPowerOfTwo(n)
+    
+
+
+ob1 = Solution()
+print(ob1.isPowerOfTwo(6))
+print(ob1.isPowerOfTwoByLoop(6))
