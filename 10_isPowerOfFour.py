@@ -1,5 +1,5 @@
 class Solution:
-    def isPowerOfFour(self, n: int) -> bool:
+    def isPowerOfFourByLoop(self, n: int) -> bool:
 
         if n<=0:
             return False
@@ -24,25 +24,33 @@ class Solution:
         return isPowerOfFour
     
 
-ob = Solution()
-print(ob.isPowerOfFour(0))
-print(ob.isPowerOfFour(1))
-print(ob.isPowerOfFour(2))
-print(ob.isPowerOfFour(3))
-print(ob.isPowerOfFour(4))
-print(ob.isPowerOfFour(5))
-print(ob.isPowerOfFour(6))
-print(ob.isPowerOfFour(7))
-print(ob.isPowerOfFour(8))
-print(ob.isPowerOfFour(9))
-print(ob.isPowerOfFour(10))
-print(ob.isPowerOfFour(11))
-print(ob.isPowerOfFour(12))
-print(ob.isPowerOfFour(13))
-print(ob.isPowerOfFour(14))
-print(ob.isPowerOfFour(15))
-print(ob.isPowerOfFour(16))
-print(ob.isPowerOfFour(17))
-print(ob.isPowerOfFour(18))
-print(ob.isPowerOfFour(19))
-print(ob.isPowerOfFour(19))
+    def isPowerOfFour(self, n: int) -> bool:
+
+        if n<=0:
+            return False
+        elif n==1:
+            return True
+       
+        ob = Solution()
+        isPowerOfFour: bool = ob.checkIsPowerOfFour(n)
+
+        return isPowerOfFour    
+    
+
+    def checkIsPowerOfFour(self, n: int) -> bool:
+        
+        if int(n%4) >= 1:
+            return False
+        
+        q: int = int(n/4)
+
+        if q==1:
+            return True
+
+        return self.checkIsPowerOfFour(q)
+
+
+ob1 = Solution()
+print(ob1.isPowerOfFourByLoop(4))
+
+print(ob1.isPowerOfFour(17))
